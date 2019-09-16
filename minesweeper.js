@@ -2,66 +2,28 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board = {
-  cells : [{
-    row: 0,
-    col: 0,
-    isMine: false,
-    hidden: true
-  },
-  { row: 0,
-    col: 1,
-    isMine: true,
-    hidden: true
-  },
-  { row: 0,
-    col: 2,
-    isMine: true,
-    hidden: true
-  },
-  {
-    row: 1,
-    col: 0,
-    isMine: false,
-    hidden: true
-  },
-  {
-    row: 1,
-    col: 1,
-    isMine: true,
-    hidden: true
-  },
-  { row: 1,
-    col: 2,
-    isMine: true,
-    hidden: true
-  },
-  { row: 2,
-    col: 0,
-    isMine: false,
-    hidden: true
-  },
-  { row: 2,
-    col: 1,
-    isMine: true,
-    hidden: true
-  },
-  { row: 2,
-    col: 2,
-    isMine: true,
-    hidden: true
-  },]
+  cells : [
+            { row: 0, col: 0, isMine: false, hidden: true},
+            { row: 0, col: 1, isMine: true, hidden: true},
+            { row: 0, col: 2, isMine: true, hidden: true},
+            
+            { row: 1, col: 0, isMine: false, hidden: true},
+            { row: 1, col: 1, isMine: true, hidden: true},
+            { row: 1, col: 2, isMine: true, hidden: true},
+            
+            { row: 2, col: 0, isMine: false, hidden: true},
+            { row: 2, col: 1, isMine: true, hidden: true},
+            { row: 2, col: 2, isMine: true, hidden: true}
+          ]
 }
 
 function startGame () {
   // for each object within the cells array, create a new key value pair, surroundingMines : countSurroundingMines(cell)
-  //board.cells.forEach (cell => {
-  //  cells.surroundingMines = countSurroundingMines(cell)
-  //})
-
-  // for each object within th
   for (i = 0; i < board.cells.length; i++) {
-  board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
-  }
+    var cell = board.cells[i]
+      cell.surroundingMines = countSurroundingMines(cell)
+    }
+   
 
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
@@ -89,8 +51,8 @@ function checkForWin () {
 function countSurroundingMines (cell) {
   var mines = 0
   var surrounding = lib.getSurroundingCells(cell.row, cell.col)
-  for (i = 0; i < surrounding.length; i++) {
-    if (cell.isMine == true) {
+  for (c = 0; c < surrounding.length; c++) {
+    if (surrounding[c].isMine === true) {
       mines ++
   }}
 return mines
