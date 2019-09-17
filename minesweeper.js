@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', startGame)
 var grid = 6 //size of grid (6x6)
 var mineChance = 0.2 //chance of square being a mine
 var board = {cells : []}
+var explosion = document.getElementById("explosion")
 
 
 for (var makeRows = 0; makeRows < grid; makeRows++) {
@@ -64,6 +65,14 @@ function checkForWin () {
 
   if (clearedSquares == notMines || markedMines == totalMines){
     lib.displayMessage('You win!')
+    var applause = document.getElementById("applause")
+    var applauseFlag = true;
+    if (applauseFlag == true) {
+      applause.pause();
+      applause.curretTime = 0;
+      applause.play();
+      applauseFlag = false;
+    }
   }
     
 }
